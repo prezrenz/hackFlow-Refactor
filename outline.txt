@@ -1,0 +1,12 @@
+# LEVELS
+
+## 1-5 TUTORIAL
+1: Increase Decrease
+2: Coordinate System
+3: Loops
+4: Input Output
+5: Disks
+
+## 6-10 EASY
+
+## 11-15 HARD
