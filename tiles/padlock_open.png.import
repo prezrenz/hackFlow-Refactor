@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exit network.png-8bd0f3e3998b9ca96281f11580a17abe.stex"
+path="res://.import/padlock_open.png-ed93f3176ede027ae17ea06a2b2d36ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/exit network.png"
-dest_files=[ "res://.import/exit network.png-8bd0f3e3998b9ca96281f11580a17abe.stex" ]
+source_file="res://tiles/padlock_open.png"
+dest_files=[ "res://.import/padlock_open.png-ed93f3176ede027ae17ea06a2b2d36ed.stex" ]
 
 [params]
 

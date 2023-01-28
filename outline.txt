@@ -1,4 +1,12 @@
+# REFACTOR
+
+
 # LEVELS
+str intro, outro
+
+# TILES
+str tilename
+
 
 ## 1-5 TUTORIAL
 1: Increase Decrease
