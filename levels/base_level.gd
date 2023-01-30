@@ -27,6 +27,9 @@ func _ready():
 
 func _process(delta):
 	process_variables_ui()
+	
+	check_player_collision()
+	
 
 
 func reset_level():
@@ -89,9 +92,11 @@ func update_player():
 	
 	player.move_player(x, y)
 	
-	var collisions = player.get_overlapping_areas()
-	
-	if check_tile(collisions[0]) == "padlock":
-		# illegal move should reset game while also throw error
-		reset_level()
 
+
+func check_player_collision():
+	var collisions = player.get_overlapping_areas()
+	if !collisions.empty():
+		if check_tile(collisions[0]) == "padlock":
+			# illegal move should reset game while also throw error
+			reset_level()
