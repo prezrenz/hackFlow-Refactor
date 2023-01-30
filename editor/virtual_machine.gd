@@ -14,10 +14,15 @@ var _commands = [
 	"jmp",
 ]
 
-var _labels = []
+var _labels = {}
 var _current_position = 0
 
 var variables = []
+
+var prev_x = 0
+var prev_y = 0
+
+var owned_by
 
 
 func _init():
@@ -37,15 +42,18 @@ func _ready():
 
 
 func add_label(label_name, pos):
-	if _find_label(label_name) == null:
-		_labels.push_back({"name": label_name, "pos": pos})
+#	if _find_label(label_name) == null:
+#		_labels.push_back({"name": label_name, "pos": pos})
+#	print(_labels)
+	if !(_labels.has(label_name)):
+		_labels.merge({label_name: pos})
 	print(_labels)
 
 
-func _find_label(label_name):
-	for i in _labels.size():
-		if _labels[i]["name"] == label_name:
-			return _labels[i]
+#func _find_label(label_name):
+#	for i in _labels.size():
+#		if _labels[i]["name"] == label_name:
+#			return _labels[i]
 
 
 func _find_variable(var_name):
@@ -56,12 +64,30 @@ func _find_variable(var_name):
 
 func _increase(var_name):
 	var variable = _find_variable(var_name)
+	
+	if variable["name"] == "x":
+		prev_x = variable["value"]
+	elif variable["name"] == "y":
+		prev_y = variable["value"]
+	
 	variable["value"] += 1
+	
+	if (variable["name"] == "x") or (variable["name"] == "y"):
+		owned_by.update_player()
 
 
 func _decrease(var_name):
 	var variable = _find_variable(var_name)
+	
+	if variable["name"] == "x":
+		prev_x = variable["value"]
+	elif variable["name"] == "y":
+		prev_y = variable["value"]
+	
 	variable["value"] -= 1
+	
+	if (variable["name"] == "x") or (variable["name"] == "y"):
+		owned_by.update_player()
 
 
 func _reset():
@@ -76,8 +102,28 @@ func _emit():
 	pass
 
 
-func _jump(command):
-	pass
+func _jump(command, arg1, arg2, arg3):
+	var test = _find_variable(arg1)
+	
+	var jump_to
+	if(command != "jmp"):
+		jump_to = _labels[arg3]
+	else:
+		jump_to = _labels[arg1]
+	
+	arg2 = int(arg2)
+	
+	if command == "jeq":
+		if test["value"] == arg2:
+			owned_by.set_editor_pos(jump_to - 1)
+	elif command == "jlt":
+		if test["value"] < arg2:
+			owned_by.set_editor_pos(jump_to - 1)
+	elif command == "jgt":
+		if test["value"] > arg2:
+			owned_by.set_editor_pos(jump_to - 1)
+	elif command == "jmp":
+		owned_by.set_editor_pos(jump_to - 1)
 
 
 func execute(command, arg1, arg2, arg3):
@@ -88,14 +134,14 @@ func execute(command, arg1, arg2, arg3):
 	elif command == "rst":
 		_reset()
 	elif command == "stor":
-		_store()
+		pass
 	elif command == "emit":
 		pass
 	elif command == "jeq":
-		pass
+		_jump(command, arg1, arg2, arg3)
 	elif command == "jlt":
-		pass
+		_jump(command, arg1, arg2, arg3)
 	elif command == "jgt":
-		pass
+		_jump(command, arg1, arg2, arg3)
 	elif command == "jmp":
-		pass
+		_jump(command, arg1, arg2, arg3)

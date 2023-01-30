@@ -37,7 +37,7 @@ func _on_Step_button_up():
 	if ';' in line:
 		return
 	
-	$VContainer/TextEdit.cursor_set_line(current_position)
+	$VContainer/TextEdit.cursor_set_line(current_position - 1)
 	
 	var command = line.get_slice(" ", 0)
 	var arg1 = line.get_slice(" ", 1)
