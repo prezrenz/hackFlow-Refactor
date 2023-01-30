@@ -14,7 +14,7 @@ func _ready():
 #	pass
 
 
-func _reset_state():
+func reset_state():
 	current_position = 0
 	$VContainer/TextEdit.cursor_set_line(0)
 
@@ -23,7 +23,7 @@ func _on_Step_button_up():
 	if current_position > $VContainer/TextEdit.get_line_count() - 1:
 		# Should throw error then reset state and break
 		print("STOP")
-		_reset_state()
+		reset_state()
 		return
 	
 	for i in $VContainer/TextEdit.get_line_count():		

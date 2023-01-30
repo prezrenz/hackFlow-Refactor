@@ -15,7 +15,6 @@ var _commands = [
 ]
 
 var _labels = {}
-var _current_position = 0
 
 var variables = []
 
@@ -39,6 +38,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func reset_state():
+	prev_x = 0
+	prev_y = 0
+	
+	_labels = {}
+	
+	for i in variables.size():
+		variables[i]["value"] = 0
 
 
 func add_label(label_name, pos):

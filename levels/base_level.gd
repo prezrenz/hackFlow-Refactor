@@ -29,6 +29,13 @@ func _process(delta):
 	process_variables_ui()
 
 
+func reset_level():
+	virtual_machine.reset_state()
+	editor.reset_state()
+	
+	player.move_player(0, 0)
+
+
 func init_variables_ui():
 	for i in virtual_machine.variables.size():
 		var nam = Label.new()
@@ -55,8 +62,36 @@ func set_editor_pos(pos):
 	editor.current_position = pos
 
 
+func check_tile(tile):
+	if tile.get_filename() == "res://tiles/padlock.tscn":
+		return  "padlock"
+	elif tile.get_filename() == "res://tiles/input.tscn":
+		return  "input"
+	elif tile.get_filename() == "res://tiles/exit_network.tscn":
+		return  "exit"
+	elif tile.get_filename() == "res://tiles/score_disk.tscn":
+		return  "score"
+	elif tile.get_filename() == "res://tiles/teleport.tscn":
+		return  "teleport"
+	
+
+
 func update_player():
 	var x = virtual_machine.variables[0]["value"]
 	var y = virtual_machine.variables[1]["value"]
+	var prev_x = virtual_machine.prev_x
+	var prev_y = virtual_machine.prev_y
+	
+	if (get_cell(x, y) == 1) or (get_cell(x, y) == INVALID_CELL):
+		# throw error, don't move player, reset level on ok
+		reset_level()
+		return
+	
 	player.move_player(x, y)
+	
+	var collisions = player.get_overlapping_areas()
+	
+	if check_tile(collisions[0]) == "padlock":
+		# illegal move should reset game while also throw error
+		reset_level()
 
