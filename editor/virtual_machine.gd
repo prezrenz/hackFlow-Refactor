@@ -27,7 +27,7 @@ var owned_by
 func _init():
 	variables.push_back({"name": "x", "value": 0, "type": "special"})
 	variables.push_back({"name": "y", "value": 0, "type": "special"})
-	variables.push_back({"name": "cnt", "value": 0, "type": "integer"})
+	variables.push_back({"name": "cnt", "value": 0, "type": "special"})
 	variables.push_back({"name": "str", "value": "", "type": "string"})
 	variables.push_back({"name": "int", "value": 0, "type": "integer"})
 
@@ -103,8 +103,14 @@ func _reset():
 	variables[2] = 0
 
 
-func _store(value, arg1):
-	pass
+func _store(arg1):
+	var data_to_store = owned_by.check_player_input()
+	var data_store = _find_variable(arg1)
+	
+	# Should check if data types are same, throw error and reset if not
+	data_store["value"] = data_to_store[0]
+	print(data_store)
+	print(data_to_store)
 
 
 func _emit():
@@ -143,7 +149,7 @@ func execute(command, arg1, arg2, arg3):
 	elif command == "rst":
 		_reset()
 	elif command == "stor":
-		pass
+		_store(arg1)
 	elif command == "emit":
 		pass
 	elif command == "jeq":

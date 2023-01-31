@@ -91,6 +91,7 @@ func check_player_input():
 	var collisions = player.get_overlapping_areas()
 	if !collisions.empty():
 		if check_tile(collisions[0]) == "input":
+			print(collisions[0].type)
 			if collisions[0].type == "string":
 				return [collisions[0].str_dat, "string"]
 			else:

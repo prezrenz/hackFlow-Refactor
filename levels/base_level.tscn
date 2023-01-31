@@ -104,6 +104,7 @@ margin_bottom = -256.0
 
 [node name="Input" parent="." instance=ExtResource( 8 )]
 position = Vector2( 144, 0 )
+str_dat = "enter"
 
 [node name="Padlock" parent="." instance=ExtResource( 7 )]
 position = Vector2( 216, 72 )
