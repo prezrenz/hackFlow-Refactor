@@ -91,13 +91,31 @@ func check_player_input():
 	var collisions = player.get_overlapping_areas()
 	if !collisions.empty():
 		if check_tile(collisions[0]) == "input":
-			print(collisions[0].type)
 			if collisions[0].type == "string":
 				return [collisions[0].str_dat, "string"]
 			else:
 				return [collisions[0].int_dat, "integer"]
 		else:
 			return null
+
+
+# Again, too many ifs, look for alternatives to it, use helper functions
+# For the error checking, should return true or false
+func check_player_unlock(key):
+	var collisions = player.get_node("Directions").get_overlapping_areas()
+	print(collisions)
+	if !collisions.empty():
+		for i in collisions.size():
+			if check_tile(collisions[i]) == "padlock":
+				print("Is padlock | l110:base_level.gd")
+				if (collisions[i].type == "string"):
+					print("Is string | l110:base_level.gd")
+					if key == collisions[i].key_str:
+						remove_child(collisions[i])
+				else:
+					if str(key) == str(collisions[i].key_int):
+						collisions[i].hide()
+						collisions[i].set_monitorable(false)
 
 
 func update_player():

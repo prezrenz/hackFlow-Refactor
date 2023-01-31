@@ -22,7 +22,6 @@ func reset_state():
 func _on_Step_button_up():
 	if current_position > $VContainer/TextEdit.get_line_count() - 1:
 		# Should throw error then reset state and break
-		print("STOP")
 		reset_state()
 		return
 	

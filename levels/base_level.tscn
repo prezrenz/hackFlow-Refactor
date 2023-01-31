@@ -108,4 +108,4 @@ str_dat = "enter"
 
 [node name="Padlock" parent="." instance=ExtResource( 7 )]
 position = Vector2( 216, 72 )
-keyStr = "enter"
+key_str = "enter"

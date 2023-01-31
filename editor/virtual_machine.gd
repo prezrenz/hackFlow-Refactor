@@ -56,7 +56,6 @@ func add_label(label_name, pos):
 #	print(_labels)
 	if !(_labels.has(label_name)):
 		_labels.merge({label_name: pos})
-	print(_labels)
 
 
 #func _find_label(label_name):
@@ -109,12 +108,11 @@ func _store(arg1):
 	
 	# Should check if data types are same, throw error and reset if not
 	data_store["value"] = data_to_store[0]
-	print(data_store)
-	print(data_to_store)
 
 
-func _emit():
-	pass
+func _emit(arg1):
+	var key_variable = _find_variable(arg1)
+	owned_by.check_player_unlock(key_variable["value"])
 
 
 func _jump(command, arg1, arg2, arg3):
@@ -151,7 +149,7 @@ func execute(command, arg1, arg2, arg3):
 	elif command == "stor":
 		_store(arg1)
 	elif command == "emit":
-		pass
+		_emit(arg1)
 	elif command == "jeq":
 		_jump(command, arg1, arg2, arg3)
 	elif command == "jlt":

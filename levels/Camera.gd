@@ -35,5 +35,5 @@ func set_camera_limits():
 	self.limit_right = map_limits.end.x * map_cellsize.x + 144
 	self.limit_top = map_limits.position.y * map_cellsize.y - 144
 	self.limit_bottom = map_limits.end.y * map_cellsize.y + 144
-	
-	print(limit_bottom)
+
+

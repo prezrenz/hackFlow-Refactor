@@ -1,47 +1,12 @@
-LEVEL 0: QUICK
 inc x
 inc x
-;rep
-inc y
-jlt y 2 rep
-dec x
-stor int
+stor str
 inc x
-emit int
-inc y
-inc y
-inc y
-dec y
-stor int
-inc y
-inc y
-inc y
-emit int
-inc x
-inc x
-inc x
-
-LEVEL 0: EXTRA
-inc x
-inc x
-;rep
-inc y
-jlt y 2 rep
-dec x
-stor int
-inc x
-emit int
-inc y
-inc y
+emit str
+;label
 inc y
 inc x
-dec x
-dec y
-stor int
+inc cnt
+jlt cnt 3 label
 inc y
 inc y
-inc y
-emit int
-inc x
-inc x
-inc x
