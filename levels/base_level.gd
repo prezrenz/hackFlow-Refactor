@@ -76,7 +76,27 @@ func check_tile(tile):
 		return  "score"
 	elif tile.get_filename() == "res://tiles/teleport.tscn":
 		return  "teleport"
-	
+
+
+func check_player_collision():
+	var collisions = player.get_overlapping_areas()
+	if !collisions.empty():
+		if check_tile(collisions[0]) == "padlock":
+			# illegal move should reset game while also throw error
+			reset_level()
+
+
+# Looks awful, merge somehow with above function, too many ifs
+func check_player_input():
+	var collisions = player.get_overlapping_areas()
+	if !collisions.empty():
+		if check_tile(collisions[0]) == "input":
+			if collisions[0].type == "string":
+				return [collisions[0].str_dat, "string"]
+			else:
+				return [collisions[0].int_dat, "integer"]
+		else:
+			return null
 
 
 func update_player():
@@ -91,12 +111,5 @@ func update_player():
 		return
 	
 	player.move_player(x, y)
-	
 
 
-func check_player_collision():
-	var collisions = player.get_overlapping_areas()
-	if !collisions.empty():
-		if check_tile(collisions[0]) == "padlock":
-			# illegal move should reset game while also throw error
-			reset_level()

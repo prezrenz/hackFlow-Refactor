@@ -2,8 +2,8 @@ extends Area2D
 
 
 export(String, "string", "integer") var type = "string"
-export(String) var strDat
-export(int) var intDat
+export(String) var str_dat
+export(int) var int_dat
 
 
 # Called when the node enters the scene tree for the first time.
