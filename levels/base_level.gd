@@ -122,6 +122,7 @@ func check_player_unlock(key):
 						return true
 					else:
 						return false
+	return true
 
 
 func update_player():

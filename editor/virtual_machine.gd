@@ -134,7 +134,7 @@ func _store(arg1):
 		owned_by.reset_level()
 	
 	# Should check if data types are same, throw error and reset if not
-	if data_to_store["type"] != data_store["type"]:
+	if data_to_store[1] != data_store["type"]:
 		owned_by.reset_level()
 	
 	data_store["value"] = data_to_store[0]
@@ -159,6 +159,7 @@ func _jump(command, arg1, arg2, arg3):
 	var test = _find_variable(arg1)
 	
 	if test == null:
+		print("there")
 		# throw error variable not found
 		owned_by.reset_level()
 	
@@ -170,6 +171,7 @@ func _jump(command, arg1, arg2, arg3):
 	
 	if jump_to == null:
 		# throw error
+		print("here")
 		owned_by.reset_level()
 		return
 	
@@ -177,15 +179,15 @@ func _jump(command, arg1, arg2, arg3):
 	
 	if command == "jeq":
 		if test["value"] == arg2:
-			owned_by.set_editor_pos(jump_to - 1)
+			owned_by.set_editor_pos(jump_to)
 	elif command == "jlt":
 		if test["value"] < arg2:
-			owned_by.set_editor_pos(jump_to - 1)
+			owned_by.set_editor_pos(jump_to)
 	elif command == "jgt":
 		if test["value"] > arg2:
-			owned_by.set_editor_pos(jump_to - 1)
+			owned_by.set_editor_pos(jump_to)
 	elif command == "jmp":
-		owned_by.set_editor_pos(jump_to - 1)
+		owned_by.set_editor_pos(jump_to)
 
 
 func execute(command, arg1, arg2, arg3):
