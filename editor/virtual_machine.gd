@@ -58,10 +58,11 @@ func add_label(label_name, pos):
 		_labels.merge({label_name: pos})
 
 
-#func _find_label(label_name):
-#	for i in _labels.size():
-#		if _labels[i]["name"] == label_name:
-#			return _labels[i]
+func _find_label(label_name):
+	if !_labels.has(label_name):
+		return null
+	else:
+		return _labels[label_name]
 
 
 func _find_variable(var_name):
@@ -123,14 +124,20 @@ func _emit(arg1):
 	owned_by.check_player_unlock(key_variable["value"])
 
 
+# too many if statements
 func _jump(command, arg1, arg2, arg3):
 	var test = _find_variable(arg1)
 	
 	var jump_to
-	if(command != "jmp"):
-		jump_to = _labels[arg3]
+	if command != "jmp":
+		jump_to = _find_label(arg3)
 	else:
-		jump_to = _labels[arg1]
+		jump_to = _find_label(arg1)
+	
+	if jump_to == null:
+		# throw error
+		owned_by.reset_level()
+		return
 	
 	arg2 = int(arg2)
 	
@@ -166,3 +173,6 @@ func execute(command, arg1, arg2, arg3):
 		_jump(command, arg1, arg2, arg3)
 	elif command == "jmp":
 		_jump(command, arg1, arg2, arg3)
+	else:
+		# error cmd not found
+		owned_by.reset_level()

@@ -22,14 +22,12 @@ func _ready():
 	variables_ui.set_visible(true)
 	
 	init_variables_ui()
-	
 
 
 func _process(delta):
 	process_variables_ui()
 	
 	check_player_collision()
-	
 
 
 func reset_level():
@@ -134,3 +132,5 @@ func update_player():
 	player.move_player(x, y)
 
 
+func throw_error():
+	pass
