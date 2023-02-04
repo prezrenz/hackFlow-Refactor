@@ -69,10 +69,16 @@ func _find_variable(var_name):
 	for i in variables.size():
 		if variables[i]["name"] == var_name:
 			return variables[i]
+	
+	return null
 
 
 func _increase(var_name):
 	var variable = _find_variable(var_name)
+	
+	if variable == null:
+		# throw error variable not found
+		owned_by.reset_level()
 	
 	# should throw error then reset
 	if variable["type"] == "string":
@@ -91,6 +97,10 @@ func _increase(var_name):
 
 func _decrease(var_name):
 	var variable = _find_variable(var_name)
+	
+	if variable == null:
+		# throw error variable not found
+		owned_by.reset_level()
 	
 	# should throw error then reset
 	if variable["type"] == "string":
@@ -115,18 +125,42 @@ func _store(arg1):
 	var data_to_store = owned_by.check_player_input()
 	var data_store = _find_variable(arg1)
 	
+	if data_store == null:
+		# throw error variable not found
+		owned_by.reset_level()
+	
+	if data_to_store == null:
+		# throw error, trying to store from empty tile
+		owned_by.reset_level()
+	
 	# Should check if data types are same, throw error and reset if not
+	if data_to_store["type"] != data_store["type"]:
+		owned_by.reset_level()
+	
 	data_store["value"] = data_to_store[0]
 
 
 func _emit(arg1):
 	var key_variable = _find_variable(arg1)
-	owned_by.check_player_unlock(key_variable["value"])
+	
+	if key_variable == null:
+		# throw error variable not found
+		owned_by.reset_level()
+	
+	var is_unlocked = owned_by.check_player_unlock(key_variable["value"])
+	
+	if !is_unlocked:
+		# throw error reset level, wrong key
+		owned_by.reset_level()
 
 
 # too many if statements
 func _jump(command, arg1, arg2, arg3):
 	var test = _find_variable(arg1)
+	
+	if test == null:
+		# throw error variable not found
+		owned_by.reset_level()
 	
 	var jump_to
 	if command != "jmp":

@@ -113,9 +113,15 @@ func check_player_unlock(key):
 					print("Is string | l110:base_level.gd")
 					if key == collisions[i].key_str:
 						collisions[i].hide()
+						return true
+					else:
+						return false
 				else:
 					if str(key) == str(collisions[i].key_int):
 						collisions[i].hide()
+						return true
+					else:
+						return false
 
 
 func update_player():
