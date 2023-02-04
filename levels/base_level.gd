@@ -81,7 +81,9 @@ func check_tile(tile):
 func check_player_collision():
 	var collisions = player.get_overlapping_areas()
 	if !collisions.empty():
-		if check_tile(collisions[0]) == "padlock":
+		# Looks bad, either use helper or another if statement
+		# Technically a HACK way of solving this
+		if (check_tile(collisions[0]) == "padlock") and (collisions[0].is_visible()):
 			# illegal move should reset game while also throw error
 			reset_level()
 
@@ -111,11 +113,10 @@ func check_player_unlock(key):
 				if (collisions[i].type == "string"):
 					print("Is string | l110:base_level.gd")
 					if key == collisions[i].key_str:
-						remove_child(collisions[i])
+						collisions[i].hide()
 				else:
 					if str(key) == str(collisions[i].key_int):
 						collisions[i].hide()
-						collisions[i].set_monitorable(false)
 
 
 func update_player():
