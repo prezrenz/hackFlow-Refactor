@@ -73,6 +73,10 @@ func _find_variable(var_name):
 func _increase(var_name):
 	var variable = _find_variable(var_name)
 	
+	# should throw error then reset
+	if variable["type"] == "string":
+		owned_by.reset_level()
+	
 	if variable["name"] == "x":
 		prev_x = variable["value"]
 	elif variable["name"] == "y":
