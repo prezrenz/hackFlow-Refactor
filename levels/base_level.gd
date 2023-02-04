@@ -35,6 +35,7 @@ func _process(delta):
 func reset_level():
 	virtual_machine.reset_state()
 	editor.reset_state()
+	get_tree().call_group("tiles", "show")
 	
 	player.move_player(0, 0)
 
