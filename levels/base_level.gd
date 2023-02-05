@@ -104,13 +104,10 @@ func check_player_input():
 # For the error checking, should return true or false
 func check_player_unlock(key):
 	var collisions = player.get_node("Directions").get_overlapping_areas()
-	print(collisions)
 	if !collisions.empty():
 		for i in collisions.size():
 			if check_tile(collisions[i]) == "padlock":
-				print("Is padlock | l110:base_level.gd")
 				if (collisions[i].type == "string"):
-					print("Is string | l110:base_level.gd")
 					if key == collisions[i].key_str:
 						collisions[i].hide()
 						return true

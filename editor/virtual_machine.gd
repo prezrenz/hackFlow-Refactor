@@ -51,9 +51,6 @@ func reset_state():
 
 
 func add_label(label_name, pos):
-#	if _find_label(label_name) == null:
-#		_labels.push_back({"name": label_name, "pos": pos})
-#	print(_labels)
 	if !(_labels.has(label_name)):
 		_labels.merge({label_name: pos})
 
@@ -159,7 +156,6 @@ func _jump(command, arg1, arg2, arg3):
 	var test = _find_variable(arg1)
 	
 	if test == null:
-		print("there")
 		# throw error variable not found
 		owned_by.reset_level()
 	
@@ -171,7 +167,6 @@ func _jump(command, arg1, arg2, arg3):
 	
 	if jump_to == null:
 		# throw error
-		print("here")
 		owned_by.reset_level()
 		return
 	
