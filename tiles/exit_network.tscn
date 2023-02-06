@@ -10,7 +10,8 @@ extents = Vector2( 32, 32 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+offset = Vector2( 4, 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 32, 32 )
+position = Vector2( 36, 36 )
 shape = SubResource( 1 )

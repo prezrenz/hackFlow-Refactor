@@ -14,6 +14,9 @@ onready var player = $Player
 onready var camera = $Camera
 
 
+var score = 0
+
+
 func _ready():
 	# Workaround: instanced scripts don't have a ref to scene root like owner since
 	# they aren't nodes, so I store ref to scene root to a variable in virtual_machine
@@ -35,6 +38,8 @@ func reset_level():
 	virtual_machine.reset_state()
 	editor.reset_state()
 	get_tree().call_group("tiles", "show")
+	get_tree().call_group("scores", "reset")
+	score = 0
 	
 	player.move_player(0, 0)
 
@@ -86,6 +91,18 @@ func check_player_collision():
 		if (check_tile(collisions[0]) == "padlock") and (collisions[0].is_visible()):
 			# illegal move should reset game while also throw error
 			throw_error("move")
+		elif (check_tile(collisions[0]) == "score"):
+			if !collisions[0].taken:
+				score += 500
+			collisions[0].hide()
+			collisions[0].taken = true
+			print(score)
+		elif (check_tile(collisions[0]) == "teleport"):
+			virtual_machine.set_variable("x", collisions[0].dest.x)
+			virtual_machine.set_variable("y", collisions[0].dest.y)
+			player.move_player(collisions[0].dest.x, collisions[0].dest.y)
+		elif (check_tile(collisions[0]) == "exit"):
+			print("ended") # end level tally score
 
 
 # Looks awful, merge somehow with above function, too many ifs

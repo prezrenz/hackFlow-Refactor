@@ -1,3 +1,5 @@
+# WITHOUT EXTRA
+
 inc x
 inc x
 stor str
@@ -10,3 +12,28 @@ inc cnt
 jlt cnt 3 label
 inc y
 inc y
+inc y
+inc y
+
+# WITH SCORE
+
+inc x
+inc x
+stor str
+inc x
+emit str
+;label
+inc y
+inc x
+inc cnt
+jlt cnt 3 label
+inc y
+inc x
+inc x
+inc y
+inc x
+inc y
+inc y
+dec x
+dec x
+dec x

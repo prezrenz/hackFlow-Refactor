@@ -69,6 +69,9 @@ func _find_variable(var_name):
 	
 	return null
 
+func set_variable(var_name, value):
+	var variable = _find_variable(var_name)
+	variable["value"] = value
 
 func _increase(var_name):
 	var variable = _find_variable(var_name)
