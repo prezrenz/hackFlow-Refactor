@@ -14,15 +14,23 @@ func _ready():
 #	pass
 
 
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			pass
+
+
 func reset_state():
 	current_position = 0
 	$VContainer/TextEdit.cursor_set_line(0)
 
+func get_current_line():
+	return $VContainer/TextEdit.get_line(current_position - 1)
 
 func _on_Step_button_up():
 	if current_position > $VContainer/TextEdit.get_line_count() - 1:
 		# Should throw error then reset level, you failed
-		owner.reset_level()
+		owner.throw_error("end")
 		return
 	
 	for i in $VContainer/TextEdit.get_line_count():		
@@ -44,3 +52,11 @@ func _on_Step_button_up():
 	var arg3 = line.get_slice(" ", 3)
 	
 	owner.virtual_machine.execute(command, arg1, arg2, arg3)
+
+
+func _on_TextEdit_text_changed():
+	$Timer.start()
+
+
+func _on_Timer_timeout():
+	owner.reset_level()

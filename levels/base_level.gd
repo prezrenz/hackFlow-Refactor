@@ -8,6 +8,7 @@ onready var virtual_machine = load("res://editor/virtual_machine.gd").new()
 
 onready var editor = $UI/Editor
 onready var variables_ui = $UI/Variables
+onready var error = $UI/ErrorPopup
 
 onready var player = $Player
 onready var camera = $Camera
@@ -84,7 +85,7 @@ func check_player_collision():
 		# Technically a HACK way of solving this
 		if (check_tile(collisions[0]) == "padlock") and (collisions[0].is_visible()):
 			# illegal move should reset game while also throw error
-			reset_level()
+			throw_error("move")
 
 
 # Looks awful, merge somehow with above function, too many ifs
@@ -108,7 +109,7 @@ func check_player_unlock(key):
 		for i in collisions.size():
 			if check_tile(collisions[i]) == "padlock":
 				if (collisions[i].type == "string"):
-					if key == collisions[i].key_str:
+					if str(key) == collisions[i].key_str: # str(key) is another hack. revise this shit my god
 						collisions[i].hide()
 						return true
 					else:
@@ -130,11 +131,12 @@ func update_player():
 	
 	if (get_cell(x, y) == 1) or (get_cell(x, y) == INVALID_CELL):
 		# throw error, don't move player, reset level on ok
-		reset_level()
+		throw_error("move")
 		return
 	
 	player.move_player(x, y)
 
 
-func throw_error():
-	pass
+func throw_error(type):
+	error.set_error_msg(editor.get_current_line(), editor.current_position, type)
+	error.popup_centered()

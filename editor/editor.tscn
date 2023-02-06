@@ -30,4 +30,9 @@ rect_min_size = Vector2( 300, 220 )
 highlight_current_line = true
 show_line_numbers = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="button_up" from="VContainer/Step" to="." method="_on_Step_button_up"]
+[connection signal="text_changed" from="VContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

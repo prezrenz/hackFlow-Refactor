@@ -1,12 +1,17 @@
-# REFACTOR
+# ERROR TYPES
 
 
-# LEVELS
-str intro, outro
+## CODE ERROR
+Variable Not Found
+Data Not Found
+Label Not Found
+Command Does Not Exist
+Type Mismatch
 
-# TILES
-str tilename
-
+## MISC ERROR
+Key Mismatch
+End Of Program
+Illegal Move
 
 ## 1-5 TUTORIAL
 1: Increase Decrease

@@ -75,11 +75,13 @@ func _increase(var_name):
 	
 	if variable == null:
 		# throw error variable not found
-		owned_by.reset_level()
+		owned_by.throw_error("variable")
+		return # HACK? : will crash without this cuz it continues even if null
 	
-	# should throw error then reset
+	# should throw error then reset, type mismatch
 	if variable["type"] == "string":
-		owned_by.reset_level()
+		owned_by.throw_error("type")
+		return # see _decrease
 	
 	if variable["name"] == "x":
 		prev_x = variable["value"]
@@ -97,11 +99,13 @@ func _decrease(var_name):
 	
 	if variable == null:
 		# throw error variable not found
-		owned_by.reset_level()
+		owned_by.throw_error("variable")
+		return # see above. good programming could've prevented this
 	
-	# should throw error then reset
+	# should throw error then reset, type mismatch
 	if variable["type"] == "string":
-		owned_by.reset_level()
+		owned_by.throw_error("type")
+		return # see above
 	
 	if variable["name"] == "x":
 		prev_x = variable["value"]
@@ -124,15 +128,17 @@ func _store(arg1):
 	
 	if data_store == null:
 		# throw error variable not found
-		owned_by.reset_level()
+		owned_by.throw_error("variable")
+		return # see _decrease
 	
 	if data_to_store == null:
 		# throw error, trying to store from empty tile
-		owned_by.reset_level()
+		owned_by.throw_error("data")
+		return # see above
 	
 	# Should check if data types are same, throw error and reset if not
 	if data_to_store[1] != data_store["type"]:
-		owned_by.reset_level()
+		owned_by.throw_error("type")
 	
 	data_store["value"] = data_to_store[0]
 
@@ -142,13 +148,14 @@ func _emit(arg1):
 	
 	if key_variable == null:
 		# throw error variable not found
-		owned_by.reset_level()
+		owned_by.throw_error("variable")
+		return # see above
 	
 	var is_unlocked = owned_by.check_player_unlock(key_variable["value"])
 	
 	if !is_unlocked:
 		# throw error reset level, wrong key
-		owned_by.reset_level()
+		owned_by.throw_error("key")
 
 
 # too many if statements
@@ -157,7 +164,8 @@ func _jump(command, arg1, arg2, arg3):
 	
 	if test == null:
 		# throw error variable not found
-		owned_by.reset_level()
+		owned_by.throw_error("variable")
+		return # see above
 	
 	var jump_to
 	if command != "jmp":
@@ -166,9 +174,9 @@ func _jump(command, arg1, arg2, arg3):
 		jump_to = _find_label(arg1)
 	
 	if jump_to == null:
-		# throw error
-		owned_by.reset_level()
-		return
+		# throw error label not found
+		owned_by.throw_error("label")
+		return # see above
 	
 	arg2 = int(arg2)
 	
@@ -206,4 +214,4 @@ func execute(command, arg1, arg2, arg3):
 		_jump(command, arg1, arg2, arg3)
 	else:
 		# error cmd not found
-		owned_by.reset_level()
+		owned_by.throw_error("cmd")
