@@ -14,10 +14,15 @@ func _ready():
 #	pass
 
 
+# for resetting game after typing after delay
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
-			pass
+			$Timer.stop()
+		elif !event.pressed:
+			print(InputEventKey)
+			print(event.pressed)
+			$Timer.start()
 
 
 func reset_state():
@@ -52,10 +57,6 @@ func _on_Step_button_up():
 	var arg3 = line.get_slice(" ", 3)
 	
 	owner.virtual_machine.execute(command, arg1, arg2, arg3)
-
-
-func _on_TextEdit_text_changed():
-	$Timer.start()
 
 
 func _on_Timer_timeout():
