@@ -26,6 +26,7 @@ func _ready():
 	variables_ui.set_visible(true)
 	
 	init_variables_ui()
+	show_intro()
 
 
 func _process(delta):
@@ -35,6 +36,7 @@ func _process(delta):
 
 
 func reset_level():
+	print(get_stack())
 	virtual_machine.reset_state()
 	editor.reset_state()
 	get_tree().call_group("tiles", "show")
@@ -102,7 +104,7 @@ func check_player_collision():
 			virtual_machine.set_variable("y", collisions[0].dest.y)
 			player.move_player(collisions[0].dest.x, collisions[0].dest.y)
 		elif (check_tile(collisions[0]) == "exit"):
-			print("ended") # end level tally score
+			show_outro() # end level tally score
 
 
 # Looks awful, merge somehow with above function, too many ifs
@@ -160,13 +162,35 @@ func throw_error(type):
 
 
 func show_intro():
-	$UI/RichTextPopup.set_text(intro)
-	$UI/RichTextPopup.popup_centered()
+	$UI/Intro.set_text(intro)
+	$UI/Intro.popup_centered()
 
 
 func show_outro():
-	$UI/RichTextPopup.set_text(intro)
-	$UI/RichTextPopup.popup_centered()
+	$UI/Outro.set_text(outro)
+	# I don't know why, but without resetting the game
+	# you can't click buttons on Outro at all, won't
+	# focus, keeps unfocusing. Without this you need
+	# to wait for the Editor Timer to end and reset the level,
+	# which happens under unknown circumstances at random times
+	# each run. My guess is the Editor node _input method
+	# is gobbling up the mouse inputs. Or something dumb.
+	reset_level()
+	$UI/Outro.popup_centered()
+
+
+func next_level():
+	var current = int(get_tree().current_scene.name)
+	var next
+	
+	print(current)
+	if current == 15:
+		next = "res://ui/credits.tscn"
+	else:
+		next = "res://levels/level_" + str(current + 1) + ".tscn"
+	print(next)
+	
+	get_tree().change_scene(next)
 
 
 func _on_PauseGame_pressed():

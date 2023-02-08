@@ -20,8 +20,6 @@ func _input(event):
 		if event.pressed:
 			$Timer.stop()
 		elif !event.pressed:
-			print(InputEventKey)
-			print(event.pressed)
 			$Timer.start()
 
 

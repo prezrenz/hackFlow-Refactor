@@ -1,4 +1,4 @@
-extends Popup
+extends AcceptDialog
 
 
 var text : String setget set_text, get_text
@@ -6,19 +6,17 @@ var text : String setget set_text, get_text
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_ok().text = "Next Level"
+	
+	add_button("Quit Game", true, "quit")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func get_ok():
-	return $Panel/VBoxContainer/Button
-
 
 func get_text_label():
-	return $Panel/VBoxContainer/Panel/RichTextLabel
+	return $VBoxContainer/Panel/RichTextLabel
 
 
 func set_text(text: String):
@@ -29,5 +27,18 @@ func get_text():
 	return text
 
 
-func _on_Button_pressed():
-	self.hide()
+func _on_Outro_confirmed():
+	pass # Replace with function body.
+
+
+func _on_Outro_custom_action(action):
+	if action == "quit":
+		get_tree().change_scene("res://ui/main_menu.tscn")
+
+
+func _on_Outro_focus_entered():
+	print("focused")
+
+
+func _on_Outro_focus_exited():
+	print("unfocused")
