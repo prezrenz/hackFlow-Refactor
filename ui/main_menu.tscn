@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/new_dynamicfont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="DynamicFontData" id=5]
+antialiased = false
+font_path = "res://fonts/SYNNova/SYNNova-Bold.otf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 256
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://fonts/SYNNova/SYNNova-Light.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 3 )
+
+[node name="MainMenu" type="ColorRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 768 )
+color = Color( 1, 0, 0, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 1280, 384 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=100 freq=4]HackFlow[/wave]"
+text = "HackFlow"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 388.0
+margin_right = 1280.0
+margin_bottom = 392.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 396.0
+margin_right = 1280.0
+margin_bottom = 615.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Play" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+text = "Play"
+flat = true
+align = 0
+
+[node name="Credits" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 1280.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+flat = true
+align = 0
+
+[node name="Quit" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 155.0
+margin_right = 1280.0
+margin_bottom = 219.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Quit Game"
+flat = true
+align = 0

@@ -157,3 +157,35 @@ func update_player():
 func throw_error(type):
 	error.set_error_msg(editor.get_current_line(), editor.current_position, type)
 	error.popup_centered()
+
+
+func show_intro():
+	$UI/RichTextPopup.set_text(intro)
+	$UI/RichTextPopup.popup_centered()
+
+
+func show_outro():
+	$UI/RichTextPopup.set_text(intro)
+	$UI/RichTextPopup.popup_centered()
+
+
+func _on_PauseGame_pressed():
+	$UI/PauseMenu.popup_centered()
+
+
+func _on_ShowEditor_pressed():
+	if editor.visible == true:
+		editor.visible = false
+	elif editor.visible == false:
+		editor.visible = true
+
+
+func _on_ShowHideData_pressed():
+	get_tree().call_group("data tiles", "toggle_data")
+
+
+func _on_ShowVariables_pressed():
+	if variables_ui.visible == true:
+		variables_ui.visible = false
+	elif variables_ui.visible == false:
+		variables_ui.visible = true
