@@ -32,5 +32,3 @@ custom_effects = [ null ]
 
 [connection signal="confirmed" from="." to="." method="_on_Outro_confirmed"]
 [connection signal="custom_action" from="." to="." method="_on_Outro_custom_action"]
-[connection signal="focus_entered" from="." to="." method="_on_Outro_focus_entered"]
-[connection signal="focus_exited" from="." to="." method="_on_Outro_focus_exited"]

@@ -36,7 +36,6 @@ func _process(delta):
 
 
 func reset_level():
-	print(get_stack())
 	virtual_machine.reset_state()
 	editor.reset_state()
 	get_tree().call_group("tiles", "show")

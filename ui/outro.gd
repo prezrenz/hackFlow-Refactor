@@ -35,10 +35,3 @@ func _on_Outro_custom_action(action):
 	if action == "quit":
 		get_tree().change_scene("res://ui/main_menu.tscn")
 
-
-func _on_Outro_focus_entered():
-	print("focused")
-
-
-func _on_Outro_focus_exited():
-	print("unfocused")
