@@ -29,7 +29,7 @@ func _ready():
 	show_intro()
 
 
-func _process(delta):
+func _process(_delta):
 	process_variables_ui()
 	
 	check_player_collision()

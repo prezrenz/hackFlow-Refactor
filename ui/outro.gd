@@ -19,8 +19,8 @@ func get_text_label():
 	return $VBoxContainer/Panel/RichTextLabel
 
 
-func set_text(text: String):
-	get_text_label().set_bbcode(text)
+func set_text(to_change: String):
+	get_text_label().set_bbcode(to_change)
 
 
 func get_text():
