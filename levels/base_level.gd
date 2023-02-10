@@ -14,7 +14,9 @@ onready var player = $Player
 onready var camera = $Camera
 
 
-var score = 0
+var score = 5000
+var disks = 0
+var won = false
 
 
 func _ready():
@@ -95,6 +97,7 @@ func check_player_collision():
 		elif (check_tile(collisions[0]) == "score"):
 			if !collisions[0].taken:
 				score += 500
+				disks += 1
 			collisions[0].hide()
 			collisions[0].taken = true
 			print(score)
@@ -103,7 +106,11 @@ func check_player_collision():
 			virtual_machine.set_variable("y", collisions[0].dest.y)
 			player.move_player(collisions[0].dest.x, collisions[0].dest.y)
 		elif (check_tile(collisions[0]) == "exit"):
-			show_outro() # end level tally score
+			if won == true:
+				return
+			else:
+				won = true
+				show_outro() # end level tally score
 
 
 # Looks awful, merge somehow with above function, too many ifs
@@ -165,8 +172,21 @@ func show_intro():
 	$UI/Intro.popup_centered()
 
 
+func calculate_score():
+	var lines_of_code = editor.get_loc()
+	score = 5000
+	print(score)
+	$UI/Outro.set_text("\n[center][color=yellow][shake rate=10 level=6]---YOUR SCORE---[/shake][/color]\n" 
+						+ "BASE SCORE: 5000\n" 
+						+ "LINES OF CODE: %d * 100 = -%d\n" % [lines_of_code, lines_of_code * 100]
+						+ "DISKS: %d * 500 = +%d\n" % [disks, disks * 500]
+						+ "FINAL SCORE: %d[/center]" % (score - (lines_of_code * 100)))
+	print(score - (lines_of_code * 100))
+
+
 func show_outro():
 	$UI/Outro.set_text(outro)
+	calculate_score()
 	# I don't know why, but without resetting the game
 	# you can't click buttons on Outro at all, won't
 	# focus, keeps unfocusing. Without this you need
@@ -183,6 +203,7 @@ func next_level():
 	var next
 	
 	print(current)
+	print(get_tree().current_scene.name)
 	if current == 15:
 		next = "res://ui/credits.tscn"
 	else:

@@ -3,7 +3,6 @@
 [ext_resource path="res://ui/outro.gd" type="Script" id=1]
 
 [node name="Outro" type="AcceptDialog"]
-visible = true
 rect_min_size = Vector2( 853, 512 )
 focus_mode = 2
 mouse_filter = 1
@@ -30,7 +29,6 @@ rect_min_size = Vector2( 837, 468 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "ssssssssssssssssss"
 scroll_active = false
 custom_effects = [ null ]
 
