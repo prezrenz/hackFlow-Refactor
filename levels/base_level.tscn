@@ -66,6 +66,7 @@ margin_right = 328.0
 margin_bottom = 242.0
 
 [node name="Intro" parent="UI" instance=ExtResource( 14 )]
+visible = false
 margin_right = 328.0
 margin_bottom = 242.0
 

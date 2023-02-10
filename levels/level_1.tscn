@@ -33,15 +33,12 @@ outro = "[center]
 
 [color=aqua]INCOMING TRANSMISSION:[/color] [color=green]4LEAF[/color]
 
-Good job, Runner! That's what I'll call you now, it fits you, you always had the tendency to run...
-Your conciousness should be transported back to your HOME NETWORK, since I rerouted the EXIT NETWORK to point to your home. From there, you can just transfer back to your body, if all goes well!
+Good job, [color=red][wave amp=50 freq=2]RUNNER[/wave][/color]! That's what I'll call you now, it fits you, you always had the tendency to run...
+Your conciousness should be transported back to your [color=red][wave amp=50 freq=2]HOME NETWORK[/wave][/color], since I rerouted the [color=red][wave amp=50 freq=2]EXIT NETWORK[/wave][/color] to point to your home. From there, you can just transfer back to your body, if all goes well!
 
 [color=aqua]--END OF  TRANSMISSION--[/color]
 
 [/center]"
-
-[node name="Intro" parent="UI" index="1"]
-visible = false
 
 [node name="ExitNetwork" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 72, 144 )
