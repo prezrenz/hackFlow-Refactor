@@ -15,12 +15,14 @@ func _ready():
 
 
 # for resetting game after typing after delay
+# disabling temporarily, quite annoying actually
 func _input(event):
-	if event is InputEventKey:
-		if event.pressed:
-			$Timer.stop()
-		elif !event.pressed:
-			$Timer.start()
+#	if event is InputEventKey:
+#		if event.pressed:
+#			$Timer.stop()
+#		elif !event.pressed:
+#			$Timer.start()
+	pass
 
 
 func reset_state():
