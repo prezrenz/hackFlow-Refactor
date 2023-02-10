@@ -18,3 +18,7 @@ func _ready():
 
 func _on_Resume_pressed():
 	self.hide()
+
+
+func _on_Quit_pressed():
+	get_tree().change_scene("res://ui/main_menu.tscn")
