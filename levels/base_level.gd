@@ -100,7 +100,6 @@ func check_player_collision():
 				disks += 1
 			collisions[0].hide()
 			collisions[0].taken = true
-			print(score)
 		elif (check_tile(collisions[0]) == "teleport"):
 			virtual_machine.set_variable("x", collisions[0].dest.x)
 			virtual_machine.set_variable("y", collisions[0].dest.y)
@@ -175,13 +174,11 @@ func show_intro():
 func calculate_score():
 	var lines_of_code = editor.get_loc()
 	score = 5000
-	print(score)
 	$UI/Outro.set_text("\n[center][color=yellow][shake rate=10 level=6]---YOUR SCORE---[/shake][/color]\n" 
 						+ "BASE SCORE: 5000\n" 
 						+ "LINES OF CODE: %d * 100 = -%d\n" % [lines_of_code, lines_of_code * 100]
 						+ "DISKS: %d * 500 = +%d\n" % [disks, disks * 500]
 						+ "FINAL SCORE: %d[/center]" % (score - (lines_of_code * 100)))
-	print(score - (lines_of_code * 100))
 
 
 func show_outro():
@@ -202,13 +199,10 @@ func next_level():
 	var current = int(get_tree().current_scene.name)
 	var next
 	
-	print(current)
-	print(get_tree().current_scene.name)
 	if current == 15:
 		next = "res://ui/credits.tscn"
 	else:
 		next = "res://levels/level_" + str(current + 1) + ".tscn"
-	print(next)
 	
 	get_tree().change_scene(next)
 

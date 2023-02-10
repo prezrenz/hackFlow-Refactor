@@ -21,7 +21,6 @@ func get_text_label():
 
 
 func set_text(to_change: String):
-	print(get_stack())
 	get_text_label().append_bbcode(to_change)
 
 
