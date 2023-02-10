@@ -124,7 +124,14 @@ margin_right = 399.0
 margin_bottom = 22.0
 text = "Toggle Variables"
 
+[node name="ShowIntro" type="Button" parent="UI/ButtonsPanel/ButtonsContainer"]
+margin_left = 403.0
+margin_right = 483.0
+margin_bottom = 22.0
+text = "Show Intro"
+
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/PauseGame" to="." method="_on_PauseGame_pressed"]
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowEditor" to="." method="_on_ShowEditor_pressed"]
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowHideData" to="." method="_on_ShowHideData_pressed"]
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowVariables" to="." method="_on_ShowVariables_pressed"]
+[connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowIntro" to="." method="_on_ShowIntro_pressed"]

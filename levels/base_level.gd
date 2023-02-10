@@ -212,3 +212,7 @@ func _on_ShowVariables_pressed():
 		variables_ui.visible = false
 	elif variables_ui.visible == false:
 		variables_ui.visible = true
+
+
+func _on_ShowIntro_pressed():
+	$UI/Intro.popup_centered()

@@ -1,0 +1,12 @@
+LEVEL 1
+inc x
+inc x
+inc x
+inc y
+inc y
+inc y
+inc y
+dec x
+dec x
+dec y
+dec y
