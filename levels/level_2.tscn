@@ -18,6 +18,15 @@ intro = "[center]
 The [color=red][wave amp=25 freq=2]CYBERSPACE[/wave][/color] works and is navigated on a [color=red][wave amp=25 freq=2]CARTESIAN PLANE[/wave][/color]. That means you have the variables X and Y which determine your position on the [color=red][wave amp=25 freq=2]CYBERSPACE[/wave][/color]. Starting at the top-left corner is the origin, and increasing in X means going left, decreasing means going right. Meanwhile increasing in Y means going down, and decreasing means going up. You can only move on blue, [color=red][wave amp=25 freq=2]DATA TILES[/wave][/color], while moving to the gray [color=red][wave amp=25 freq=2]NULL TILES[/wave][/color] resets you to your initial state. Now, get to the exit using the [color=red][wave amp=25 freq=2]INC[/wave][/color] and [color=red][wave amp=25 freq=2]DEC[/wave][/color] commands!
 
 [/center]"
+outro = "[center]
+
+[color=aqua]INCOMING TRANSMISSION:[/color] [color=purple]UNKNOWN[/color]
+
+[rainbow freq=0.2 sat=10 val=20][shake rate=10 level=6]%$#! TRUST !@# !![/shake][/rainbow]
+
+[color=aqua]--END OF TRANSMISSION--[/color]
+
+[/center]"
 
 [node name="ExitNetwork" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 216, 144 )

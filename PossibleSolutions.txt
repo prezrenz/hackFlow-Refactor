@@ -20,7 +20,6 @@ inc y
 inc y
 inc y
 inc y
-inc y
 dec x
 dec x
 dec x
