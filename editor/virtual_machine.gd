@@ -170,6 +170,10 @@ func _jump(command, arg1, arg2, arg3):
 		owned_by.throw_error("variable")
 		return # see above
 	
+	if test["type"] == "string":
+		owned_by.throw_error("type")
+		return # see above
+	
 	var jump_to
 	if command != "jmp":
 		jump_to = _find_label(arg3)

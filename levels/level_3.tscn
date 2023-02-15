@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://levels/tileset.png" type="Texture" id=1]
 [ext_resource path="res://levels/base_level.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://editor/editor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/variables.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tiles/exit_network.tscn" type="PackedScene" id=7]
 [ext_resource path="res://errors/error_popup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/pause_menu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ui/intro.tscn" type="PackedScene" id=14]
@@ -52,9 +53,25 @@ intro = "[center]
 
 [color=aqua]INCOMING TRANSMISSION:[/color] [color=green]4LEAF[/color]
 
-That B@$7@#9, they rerouted you again! They even tried to send you [color=red][shake rate=10 level=6]MOJIBAKE[/shake][/color]. Harmful stuff, trust me. This one's easy though, just a straight line. Head for the exit!
+That B@$7@#9, they rerouted you again! They even tried to send you some [color=red][shake rate=10 level=6]MOJIBAKE[/shake][/color]. Harmful stuff, trust me. This one's easy though, just a straight line. Head for the exit!
 
 [color=aqua]--END OF TRANSMISSION--[/color]
+
+[color=aqua][shake rate=10 level=6]---TUTORIAL---[/shake][/color]
+
+Repeating INC and DEC commands are inefficient. You can use [color=red][wave amp=25 freq=2]JUMP[/wave][/color] commands to loop over a section of code. A [color=red][wave amp=25 freq=2]JUMP[/wave][/color] command will make the code jump back to a position then continue execution from that point onwards. There are different [color=red][wave amp=25 freq=2]JUMP[/wave][/color] commands that function differently from each other. But each [color=red][wave amp=25 freq=2]JUMP[/wave][/color] command all need a [color=red][wave amp=25 freq=2]LABEL[/wave][/color], which is a special piece of code that gives a name to a position in code, and giving that name to the [color=red][wave amp=25 freq=2]JUMP[/wave][/color] command will make the code jump to that position with the [color=red][wave amp=25 freq=2]LABEL[/wave][/color]! Declare [color=red][wave amp=25 freq=2]LABELS[/wave][/color], start with a semi-colon(;) and follow that with the label name. 
+
+[color=aqua][shake rate=10 level=6]---COMMANDS---[/shake][/color]
+[color=red][shake rate=10 level=6]JLT ARG1 ARG2 ARG3[/shake][/color] - JUMPS TO LABEL ARG3 IF THE VALUE OF VARIABLE ARG1 IS LESS THAN THE NUMBER ARG2
+[color=red][shake rate=10 level=6]JGT/JEQ[/shake][/color] - FUNCTIONS THE SAME AS JLT, BUT EVALUATES IF GREATER THAN FOR JGT AND JEQ IF ARG1 AND ARG2 ARE EQUAL
+ARG1 TAKES ANY INT VARIABLE FROM THE VARIABLE LIST, ARG2 TAKES ANY NUMBER PROVIDED BY YOU, ARG3 IS A LABEL YOU HAVE DECLARED ANYWHERE IN THE CODE
+[color=red][shake rate=10 level=6]JMP ARG1[/shake][/color] - JMP IS A SPECIAL JUMP, WHEREIN IT DOESN'T NEED TO TEST VARIABLES AND IMMEDIATELY JUMPS TO THE LABEL ARG1. ARG1 IS A LABEL YOU HAVE DECLARED ANYWHERE IN CODE
+
+[color=aqua][shake rate=10 level=6]---SAMPLE CODE---[/shake][/color]
+---The following code will inc x, check if x is less than 15, and if x is less than 15 then jump back to ;label ---
+;label
+inc x
+jlt x 15 label
 
 [/center]"
 outro = "[center]
@@ -146,6 +163,9 @@ margin_left = 403.0
 margin_right = 483.0
 margin_bottom = 22.0
 text = "Show Intro"
+
+[node name="ExitNetwork" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1080, 0 )
 
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/PauseGame" to="." method="_on_PauseGame_pressed"]
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowEditor" to="." method="_on_ShowEditor_pressed"]
