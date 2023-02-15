@@ -1,7 +1,14 @@
 # FREQUENTLY USED TAGS
 
-[center][color=aqua]INCOMING TRANSMISSION:[/color] [color=green]4LEAF[/color][/center]
-[center][color=aqua]--END OF TRANSMISSION--[/color][/center]
+[center]
+
+[color=aqua]INCOMING TRANSMISSION:[/color] [color=green]4LEAF[/color]
+
+
+
+[color=aqua]--END OF TRANSMISSION--[/color]
+
+[/center]
 
 [color=aqua][shake rate=10 level=6]---TUTORIAL---[/shake][/color]
 [color=red][wave amp=25 freq=2]EDITOR[/wave][/color]
@@ -16,3 +23,5 @@
 ## 6-10 EASY
 
 ## 11-15 HARD
+
+## ALT 3 EASY 2 HARD

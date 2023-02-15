@@ -30,3 +30,16 @@ dec y
 inc x
 inc x
 inc x
+LEVEL 3
+;label
+inc x
+jlt x 15 label
+LEVEL 4
+inc y
+inc y
+inc y
+stor str
+inc x
+emit str
+inc x
+inc x
