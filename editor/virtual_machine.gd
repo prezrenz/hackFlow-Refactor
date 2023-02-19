@@ -165,14 +165,14 @@ func _emit(arg1):
 func _jump(command, arg1, arg2, arg3):
 	var test = _find_variable(arg1)
 	
-	if test == null:
-		# throw error variable not found
-		owned_by.throw_error("variable")
-		return # see above
-	
-	if test["type"] == "string":
-		owned_by.throw_error("type")
-		return # see above
+	if command != "jmp":
+		if test == null:
+			# throw error variable not found
+			owned_by.throw_error("variable")
+			return # see above
+		if test["type"] == "string":
+			owned_by.throw_error("type")
+			return # see above
 	
 	var jump_to
 	if command != "jmp":

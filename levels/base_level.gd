@@ -96,7 +96,7 @@ func check_player_collision():
 			throw_error("move")
 		elif (check_tile(collisions[0]) == "score"):
 			if !collisions[0].taken:
-				score += 500
+				score += 800
 				disks += 1
 			collisions[0].hide()
 			collisions[0].taken = true

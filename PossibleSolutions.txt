@@ -43,3 +43,15 @@ inc x
 emit str
 inc x
 inc x
+LEVEL 5
+;loop
+inc y
+jmp loop
+LEVEL 5 ALT
+inc y
+inc y
+inc x
+inc x
+inc x
+dec x
+dec x
