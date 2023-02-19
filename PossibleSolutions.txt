@@ -62,3 +62,17 @@ inc y
 inc x
 inc x
 jmp loop
+LEVEL 7
+;loop
+inc x
+jmp loop
+LEVEL 7 ALT
+;loop
+inc x
+jlt x 5 loop
+;loop2
+inc y
+jlt y 5 loop2
+;loop3
+dec y
+jmp loop3
