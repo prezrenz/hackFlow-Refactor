@@ -76,3 +76,19 @@ jlt y 5 loop2
 ;loop3
 dec y
 jmp loop3
+LEVEL 8
+;loop
+inc x
+inc cnt
+jlt cnt 24 loop
+dec x
+dec x
+dec x
+LEVEL 8 ALT
+;loop
+inc x
+jlt x 15 loop
+dec x
+dec x
+dec x
+LEVEL 8 ALT 2
