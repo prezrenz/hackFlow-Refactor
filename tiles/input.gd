@@ -13,7 +13,7 @@ func _ready():
 	if type == "string":
 		$Data/Label.set_text("data: " + str_dat)
 	elif type == "integer":
-		$Data/Label.set_text("data: " + int_dat)
+		$Data/Label.set_text("data: " + str(int_dat))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

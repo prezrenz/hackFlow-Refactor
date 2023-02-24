@@ -35,5 +35,6 @@ show_line_numbers = true
 wait_time = 2.0
 one_shot = true
 
+[connection signal="pressed" from="VContainer/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="button_up" from="VContainer/Step" to="." method="_on_Step_button_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

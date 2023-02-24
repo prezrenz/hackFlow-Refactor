@@ -10,6 +10,7 @@ dec x
 dec x
 dec y
 dec y
+
 LEVEL 2
 inc x
 inc x
@@ -30,10 +31,12 @@ dec y
 inc x
 inc x
 inc x
+
 LEVEL 3
 ;label
 inc x
 jlt x 15 label
+
 LEVEL 4
 inc y
 inc y
@@ -43,6 +46,7 @@ inc x
 emit str
 inc x
 inc x
+
 LEVEL 5
 ;loop
 inc y
@@ -55,6 +59,7 @@ inc x
 inc x
 dec x
 dec x
+
 LEVEL 6
 ;loop
 inc y
@@ -62,6 +67,7 @@ inc y
 inc x
 inc x
 jmp loop
+
 LEVEL 7
 ;loop
 inc x
@@ -76,6 +82,7 @@ jlt y 5 loop2
 ;loop3
 dec y
 jmp loop3
+
 LEVEL 8
 ;loop
 inc x
@@ -92,3 +99,20 @@ dec x
 dec x
 dec x
 LEVEL 8 ALT 2
+
+LEVEL 9
+;loop
+inc x
+jlt x 8 loop
+;loop2
+inc y
+jlt y 5 loop2
+LEVEL 9 ALT
+;loop
+inc x
+jlt x 8 loop
+stor int
+emit int
+inc x
+inc x
+jmp loop

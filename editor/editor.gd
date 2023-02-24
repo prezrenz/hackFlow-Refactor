@@ -64,3 +64,7 @@ func _on_Step_button_up():
 
 func _on_Timer_timeout():
 	owner.reset_level()
+
+
+func _on_Reset_pressed():
+	owner.reset_level()

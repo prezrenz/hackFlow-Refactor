@@ -14,7 +14,7 @@ func _ready():
 	if type == "string":
 		$Data/Label.set_text("key: " + key_str)
 	elif type == "integer":
-		$Data/Label.set_text("key: " + key_int)
+		$Data/Label.set_text("key: " + str(key_int))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
