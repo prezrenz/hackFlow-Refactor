@@ -116,3 +116,9 @@ emit int
 inc x
 inc x
 jmp loop
+
+LEVEL 10
+;l
+inc y
+jlt y 6 l
+dec x
