@@ -158,3 +158,16 @@ inc cnt
 jlt cnt 5 loop2
 rst
 jmp loop
+
+LEVEL 14
+;loop
+inc y
+inc cnt
+jlt cnt 4 loop
+rst
+;loop2
+inc x
+inc cnt
+jlt cnt 4 loop2
+rst
+jmp loop
