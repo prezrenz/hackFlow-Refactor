@@ -122,7 +122,7 @@ func _decrease(var_name):
 
 
 func _reset():
-	variables[2] = 0
+	variables[2]["value"] = 0
 
 
 func _store(arg1):

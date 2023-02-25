@@ -139,3 +139,22 @@ emit str
 inc y
 inc y
 jmp loop
+
+LEVEL 12
+;loop
+inc x
+inc y
+jmp loop
+
+LEVEL 13
+;loop
+inc x
+inc cnt
+jlt cnt 5 loop
+rst
+;loop2
+inc y
+inc cnt
+jlt cnt 5 loop2
+rst
+jmp loop

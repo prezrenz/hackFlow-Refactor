@@ -20,9 +20,9 @@ intro = "[center]
 [/center]"
 outro = "[center]
 
-[color=aqua]INCOMING TRANSMISSION:[/color] [color=green]Handler[/color]
+[color=aqua]INCOMING TRANSMISSION:[/color] [color=yellow]Handler[/color]
 
-A [color=red][wave amp=25 freq=2]CONNECTION[/wave][/color], can you hear me Agent? Agent--
+A [color=yellow][wave amp=25 freq=2]CONNECTION[/wave][/color], can you hear me Agent? Agent--
 
 [color=aqua]--END OF TRANSMISSION--[/color]
 
