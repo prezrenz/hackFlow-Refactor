@@ -122,3 +122,20 @@ LEVEL 10
 inc y
 jlt y 6 l
 dec x
+
+LEVEL 11
+;loop
+inc y
+jlt y 4 loop
+jgt x 2 str
+;int
+stor int
+emit int
+jmp end
+;str
+stor str
+emit str
+;end
+inc y
+inc y
+jmp loop

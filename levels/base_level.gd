@@ -176,9 +176,9 @@ func calculate_score():
 	score = 5000
 	$UI/Outro.set_text("\n[center][color=yellow][shake rate=10 level=6]---YOUR SCORE---[/shake][/color]\n" 
 						+ "BASE SCORE: 5000\n" 
-						+ "LINES OF CODE: %d * 100 = -%d\n" % [lines_of_code, lines_of_code * 100]
-						+ "DISKS: %d * 500 = +%d\n" % [disks, disks * 500]
-						+ "FINAL SCORE: %d[/center]" % (score - (lines_of_code * 100)))
+						+ "LINES OF CODE: %d * 50 = -%d\n" % [lines_of_code, lines_of_code * 50]
+						+ "DISKS: %d * 800 = +%d\n" % [disks, disks * 800]
+						+ "FINAL SCORE: %d[/center]" % (score - (lines_of_code * 50)))
 
 
 func show_outro():
