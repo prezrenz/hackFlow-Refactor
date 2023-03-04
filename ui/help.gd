@@ -1,4 +1,4 @@
-extends Popup
+extends PopupPanel
 
 
 # Declare member variables here. Examples:
@@ -16,13 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Resume_pressed():
+func _on_Button_pressed():
 	self.hide()
-
-
-func _on_Quit_pressed():
-	get_tree().change_scene("res://ui/main_menu.tscn")
-
-
-func _on_Help_pressed():
-	$Help.popup_centered()

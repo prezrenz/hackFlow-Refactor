@@ -1,0 +1,109 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/help.gd" type="Script" id=1]
+
+[node name="Help" type="PopupPanel"]
+margin_right = 14.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 853, 512 )
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 849.0
+margin_bottom = 508.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 838.0
+margin_bottom = 497.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer"]
+margin_right = 831.0
+margin_bottom = 466.0
+rect_min_size = Vector2( 831, 466 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Panel"]
+margin_right = 12.0
+rect_min_size = Vector2( 831, 466 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+
+[color=aqua]INCOMING TRANSMISSION:[/color] [color=green]4LEAF[/color]
+
+Maybe these will help...
+
+[color=red][wave amp=25 freq=2]VARIABLES[/wave][/color]
+[color=aqua][shake rate=10 level=6]x - INTEGER[/shake][/color] - Can only change via commands
+[color=aqua][shake rate=10 level=6]y - INTEGER[/shake][/color] - Can only change via commands
+[color=aqua][shake rate=10 level=6]cnt - INTEGER[/shake][/color] - Can only change via commands
+[color=aqua][shake rate=10 level=6]int - INTEGER[/shake][/color] - Can store variables
+[color=aqua][shake rate=10 level=6]str - STRING[/shake][/color] - Can store variables
+
+
+[color=red][wave amp=25 freq=2]COMMANDS[/wave][/color]
+[color=aqua][shake rate=10 level=6]INC ARG1[/shake][/color] - Increases the variable ARG1, which must be a variable from the list above except int and str
+[color=aqua][shake rate=10 level=6]DEC ARG1[/shake][/color] - Same as INC command, but decreases instead of increases
+[color=aqua][shake rate=10 level=6]RST[/shake][/color] - Resets the variable cnt to zero
+[color=aqua][shake rate=10 level=6]STOR ARG1[/shake][/color] - Stores input data from the current tile to the variable ARG1, to either int or str
+[color=aqua][shake rate=10 level=6]EMIT ARG1[/shake][/color] - Emits the data from ARG1, either int or str, to unlock nearby locks if possible
+[color=aqua][shake rate=10 level=6]JEQ ARG1 ARG2 ARG3[/shake][/color] - Jumps to label ARG3 in code, if the variable ARG1 is EQUAL TO the given number ARG2
+[color=aqua][shake rate=10 level=6][/shake]JLT ARG1 ARG2 ARG3[/color] - Same as JEQ but checks and only jumps if LESS THAN
+[color=aqua][shake rate=10 level=6][/shake]JGT ARG1 ARG2 ARG3[/color] - Same as JEQ but checks and only jumps if GREATER THAN
+[color=aqua][shake rate=10 level=6]JMP ARG1[/shake][/color] - Jumps unconditionally, without any checks, to the label ARG1 in code
+
+
+[color=aqua]--END OF TRANSMISSION--[/color]
+
+[/center]"
+text = "
+
+INCOMING TRANSMISSION: 4LEAF
+
+Maybe these will help...
+
+VARIABLES
+x - INTEGER - Can only change via commands
+y - INTEGER - Can only change via commands
+cnt - INTEGER - Can only change via commands
+int - INTEGER - Can store variables
+str - STRING - Can store variables
+
+
+COMMANDS
+INC ARG1 - Increases the variable ARG1, which must be a variable from the list above except int and str
+DEC ARG1 - Same as INC command, but decreases instead of increases
+RST - Resets the variable cnt to zero
+STOR ARG1 - Stores input data from the current tile to the variable ARG1, to either int or str
+EMIT ARG1 - Emits the data from ARG1, either int or str, to unlock nearby locks if possible
+JEQ ARG1 ARG2 ARG3 - Jumps to label ARG3 in code, if the variable ARG1 is EQUAL TO the given number ARG2
+JLT ARG1 ARG2 ARG3 - Same as JEQ but checks and only jumps if LESS THAN
+JGT ARG1 ARG2 ARG3 - Same as JEQ but checks and only jumps if GREATER THAN
+JMP ARG1 - Jumps unconditionally, without any checks, to the label ARG1 in code
+
+
+--END OF TRANSMISSION--
+
+"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 470.0
+margin_right = 831.0
+margin_bottom = 490.0
+rect_min_size = Vector2( 831, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Return"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

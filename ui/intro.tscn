@@ -3,7 +3,6 @@
 [ext_resource path="res://ui/intro.gd" type="Script" id=1]
 
 [node name="Intro" type="PopupPanel"]
-visible = true
 margin_right = 853.0
 margin_bottom = 512.0
 rect_min_size = Vector2( 853, 512 )
