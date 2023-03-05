@@ -17,12 +17,15 @@ func _ready():
 
 
 func _on_Resume_pressed():
+	owner.play_sound("select")
 	self.hide()
 
 
 func _on_Quit_pressed():
+	owner.play_sound("select")
 	get_tree().change_scene("res://ui/main_menu.tscn")
 
 
 func _on_Help_pressed():
+	owner.play_sound("select")
 	$Help.popup_centered()

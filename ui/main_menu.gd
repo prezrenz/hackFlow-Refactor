@@ -17,12 +17,15 @@ func _ready():
 
 
 func _on_Play_pressed():
+	$AudioStreamPlayer.play()
 	get_tree().change_scene("res://levels/level_1.tscn")
 
 
 func _on_Credits_pressed():
+	$AudioStreamPlayer.play()
 	get_tree().change_scene("res://ui/credits.tscn")
 
 
 func _on_Quit_pressed():
+	$AudioStreamPlayer.play()
 	get_tree().quit()

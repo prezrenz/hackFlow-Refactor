@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_Return_pressed():
+	$Sel.play(0)
 	get_tree().change_scene("res://ui/main_menu.tscn")

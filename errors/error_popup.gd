@@ -47,4 +47,5 @@ func set_error_msg(line, pos, type):
 
 
 func _on_ErrorPopup_confirmed():
+	owner.play_sound("select")
 	owner.reset_level()

@@ -30,4 +30,5 @@ func get_text():
 
 
 func _on_Button_pressed():
+	owner.play_sound("select")
 	self.hide()

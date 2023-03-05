@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFontData" id=5]
 antialiased = false
@@ -91,6 +92,9 @@ custom_fonts/font = ExtResource( 1 )
 text = "Quit Game"
 flat = true
 align = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]

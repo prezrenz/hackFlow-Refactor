@@ -162,6 +162,11 @@ func update_player():
 
 
 func throw_error(type):
+	if type == "end":
+		play_sound("fail")
+	else:
+		play_sound("error")
+	
 	error.set_error_msg(editor.get_current_line(), editor.current_position, type)
 	error.popup_centered()
 
@@ -182,6 +187,7 @@ func calculate_score():
 
 
 func show_outro():
+	play_sound("win")
 	$UI/Outro.set_text(outro)
 	calculate_score()
 	# I don't know why, but without resetting the game
@@ -208,10 +214,12 @@ func next_level():
 
 
 func _on_PauseGame_pressed():
+	play_sound("select")
 	$UI/PauseMenu.popup_centered()
 
 
 func _on_ShowEditor_pressed():
+	play_sound("select")
 	if editor.visible == true:
 		editor.visible = false
 	elif editor.visible == false:
@@ -219,10 +227,12 @@ func _on_ShowEditor_pressed():
 
 
 func _on_ShowHideData_pressed():
+	play_sound("select")
 	get_tree().call_group("data tiles", "toggle_data")
 
 
 func _on_ShowVariables_pressed():
+	play_sound("select")
 	if variables_ui.visible == true:
 		variables_ui.visible = false
 	elif variables_ui.visible == false:
@@ -230,4 +240,16 @@ func _on_ShowVariables_pressed():
 
 
 func _on_ShowIntro_pressed():
+	play_sound("select")
 	$UI/Intro.popup_centered()
+
+
+func play_sound(snd: String):
+	if snd == "win":
+		$Win.play()
+	elif snd == "fail":
+		$Fail.play()
+	elif snd == "error":
+		$Error.play()
+	elif snd == "select":
+		$Select.play()

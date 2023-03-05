@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_Button_pressed():
+	owner.owner.play_sound("select")
 	self.hide()

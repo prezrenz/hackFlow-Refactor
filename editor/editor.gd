@@ -36,6 +36,7 @@ func get_loc():
 	return $VContainer/TextEdit.get_line_count()
 
 func _on_Step_button_up():
+	owner.play_sound("select")
 	if current_position > $VContainer/TextEdit.get_line_count() - 1:
 		# Should throw error then reset level, you failed
 		owner.throw_error("end")
@@ -67,4 +68,5 @@ func _on_Timer_timeout():
 
 
 func _on_Reset_pressed():
+	owner.play_sound("select")
 	owner.reset_level()

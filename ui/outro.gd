@@ -29,10 +29,12 @@ func get_text():
 
 
 func _on_Outro_confirmed():
+	owner.play_sound("select")
 	owner.next_level()
 
 
 func _on_Outro_custom_action(action):
 	if action == "quit":
+		owner.play_sound("select")
 		get_tree().change_scene("res://ui/main_menu.tscn")
 
