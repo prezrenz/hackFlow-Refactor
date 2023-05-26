@@ -30,3 +30,8 @@ func _on_Credits_pressed():
 func _on_Quit_pressed():
 	$AudioStreamPlayer.play()
 	get_tree().quit()
+
+
+func _on_Level_Select_pressed():
+	$AudioStreamPlayer.play()
+	get_tree().change_scene("res://ui/level_selector.tscn")
