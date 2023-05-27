@@ -22,7 +22,12 @@ var levels_unlocked = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var save = File.new()
+	print(save.file_exists("user://levels_unlocked.sav"))
+	if(!save.file_exists("user://levels_unlocked.sav")):
+		save_levels_unlocked()
+	else:
+		load_levels_unlocked()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,3 +37,17 @@ func _ready():
 
 #func unlock_level(level: int):
 #	levels_unlocked["level_" + str(level)]
+
+
+func save_levels_unlocked():
+	var sav = File.new()
+	sav.open("user://levels_unlocked.sav", File.WRITE)
+	sav.store_string(var2str(levels_unlocked))
+	sav.close()
+
+
+func load_levels_unlocked():
+	var sav = File.new()
+	sav.open("user://levels_unlocked.sav", File.READ)
+	levels_unlocked = str2var(sav.get_as_text())
+	sav.close()
