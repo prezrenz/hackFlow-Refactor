@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/tileset.png" type="Texture" id=1]
 [ext_resource path="res://levels/base_level.gd" type="Script" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://ui/variables.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tiles/exit_network.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/win.wav" type="AudioStream" id=8]
 [ext_resource path="res://errors/error_popup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sounds/fail.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/error.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=12]
 [ext_resource path="res://ui/pause_menu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ui/intro.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ui/outro.tscn" type="PackedScene" id=15]
@@ -99,7 +103,6 @@ margin_right = 328.0
 margin_bottom = 242.0
 
 [node name="Intro" parent="UI" instance=ExtResource( 14 )]
-visible = false
 margin_right = 328.0
 margin_bottom = 242.0
 
@@ -166,6 +169,18 @@ text = "Show Intro"
 
 [node name="ExitNetwork" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1080, 0 )
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/PauseGame" to="." method="_on_PauseGame_pressed"]
 [connection signal="pressed" from="UI/ButtonsPanel/ButtonsContainer/ShowEditor" to="." method="_on_ShowEditor_pressed"]

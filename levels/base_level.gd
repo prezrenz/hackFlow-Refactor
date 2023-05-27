@@ -20,6 +20,7 @@ var won = false
 
 
 func _ready():
+	Globals.levels_unlocked[self.get_name()] = true
 	# Workaround: instanced scripts don't have a ref to scene root like owner since
 	# they aren't nodes, so I store ref to scene root to a variable in virtual_machine
 	virtual_machine.owned_by = self
@@ -187,6 +188,8 @@ func calculate_score():
 
 
 func show_outro():
+	Globals.levels_unlocked["level_" + str(int(self.get_name())+1)] = true
+	print("level_" + str(int(self.get_name())))
 	play_sound("win")
 	$UI/Outro.set_text(outro)
 	calculate_score()
